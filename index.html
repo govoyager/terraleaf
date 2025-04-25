@@ -319,8 +319,23 @@
 
     .marquee-track {
       display: flex;
-      animation: marqueeScroll 10s linear infinite;
+      animation: marqueeScroll 20s linear infinite;
     }
+
+    /* Faster on larger screens (desktop) */
+    @media (min-width: 768px) {
+      .marquee-track {
+        animation-duration: 10s;
+      }
+    }
+
+    /* Slower on smaller screens (mobile) */
+    @media (max-width: 767px) {
+      .marquee-track {
+        animation-duration: 5s;
+      }
+    }
+
 
     .marquee-item {
       flex: 0 0 auto;
