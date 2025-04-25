@@ -5,8 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Products</title>
   <style>
-    /* Basic styling for the page */
-    /* Basic styling for the page */
+
+
+
+header {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 1001;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 5px;
+    }
+
+    .search-form input[type="text"] {
+      padding: 6px 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .search-form button {
+      padding: 6px 12px;
+      background-color: #9BA17B;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .menu-toggle {
+      font-size: 26px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #2E2E2E;
+      display: none;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2E2E2E;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a.active {
+        color: white;
+        background-color: #cf4c2b; /* Orange background for highlighting */
+        border-radius: 5px;
+        padding: 5px 5px;
+    }
+
+    .nav-links a:hover {
+      color: #9BA17B;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      width: 250px;
+      background-color: #ffffff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .side-drawer.open {
+      left: 0; /* This makes the drawer visible when the 'open' class is added */
+    }
+
+    .side-drawer a {
+      padding: 15px 25px;
+      border-bottom: 1px solid #ffffff;
+      color: #2E2E2E;
+      font-size: 18px;
+    }
+
+    .side-drawer a:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links,
+      .search-form {
+        display: none;
+      }
+
+      .logo {
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+      }
+    }
+
+
+/* Basic styling for the page */
 body {
   font-family: Arial, sans-serif;
   margin: 10;
@@ -16,22 +146,21 @@ body {
 
 .info-section {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  gap: 20px; /* Space between items */
   padding: 50px 20px;
 }
 
 .info-box {
-  flex: 1 1 300px;
-  background-color: #F4F3EF;
+  flex: 1 1 calc(33.333% - 20px); /* Default to 3 items per row (desktop) */
+  background-color: #cddac8;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  cursor: pointer; /* Makes it clickable */
 }
 
+/* Image styling */
 .info-box img {
   width: 100%;
   max-height: 300px;
@@ -51,16 +180,12 @@ body {
 
 /* Media query for mobile (max-width: 768px) */
 @media (max-width: 768px) {
-  .info-section {
-    flex-direction: row; /* Align items in a row */
-    justify-content: center;
-  }
-
   .info-box {
-    flex: 1 1 calc(50% - 20px); /* Two items per row, 50% width minus gap */
-    margin-bottom: 20px; /* Add space between rows */
+    flex: 1 1 calc(50% - 20px); /* 2 items per row on mobile */
   }
 }
+
+
 
 
     /* Modal styles */
@@ -134,6 +259,39 @@ body {
 </head>
 <body>
 
+    <header>
+        <nav class="navbar">
+          <button class="menu-toggle" onclick="toggleDrawer()">☰</button>
+    
+          <!-- Search Form -->
+          <form class="search-form" action="/search" method="GET">
+            <input type="text" name="q" placeholder="Search...">
+            <button type="submit">Search</button>
+          </form>
+    
+          <!-- Centered Logo -->
+          <div class="logo">
+            <img src="assets/terraleaf.png" alt="The Terra Leaf Logo" />
+          </div>
+    
+          <!-- Nav Menu -->
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#" class="active">Products</a>
+            <a href="#">Contact</a>
+          </div>          
+        </nav>
+      </header>
+    
+      <!-- SIDE DRAWER FOR SMALL SCREEN -->
+      <div class="side-drawer" id="sideDrawer">
+        <a href="index.html" style="text-decoration: none;">Home</a>
+        <a href="#" style="text-decoration: none;">About</a>
+        <a href="#" style="text-decoration: none;">Products</a>
+        <a href="#" style="text-decoration: none;">Contact</a>
+      </div>
+
   <h2 style="text-align: center; background-color: white; margin-top: 30px;">All Our Products</h2>
 
   <section class="info-section">
@@ -188,7 +346,7 @@ body {
         <p id="modal-uses"></p>
         <!-- Buy Now Button -->
         <a id="modal-buy-btn" class="buy-now-btn" target="_blank" href="#">
-          Buy Now on WhatsApp
+          Buy Now
         </a>
       </div>
     </div>
