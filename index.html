@@ -307,6 +307,52 @@
     .view-products-btn:hover {
       background-color: #7a8a5a;
     }
+    
+    .promo-marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: #fff;
+      border-top: 2px solid #eee;
+      border-bottom: 2px solid #eee;
+      padding: 10px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      animation: marqueeScroll 10s linear infinite;
+    }
+
+    .marquee-item {
+      flex: 0 0 auto;
+      margin-right: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .marquee-item.text {
+      font-size: 20px;
+      color: #000000;
+      font-weight: 1000;
+    }
+
+    .marquee-item.image img {
+      height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* Ensure the track scrolls infinitely */
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); /* Moves to half the track's total width */
+      }
+    }
+
+
 
   </style>
 </head>
@@ -355,6 +401,37 @@
     <div class="hero-text">THE TERRA LEAF</div>
     <a href="#products" class="view-products-btn">Our Collection</a>
   </section>  
+  
+
+  <section class="promo-marquee">
+    <div class="marquee-track">
+      <!-- Text and images inside the marquee -->
+      <div class="marquee-item text">💛 Made with love 💛</div>
+      <div class="marquee-item image"><img src="assets/1.png" alt="Scroll 1"></div>
+      <div class="marquee-item text">🌿 Exporting Globally 🌿</div>
+      <div class="marquee-item image"><img src="assets/2.png" alt="Scroll 2"></div>
+      <div class="marquee-item text">👩‍🌾 Sourced from Farmers 👩‍🌾</div>
+      <div class="marquee-item image"><img src="assets/3.png" alt="Scroll 3"></div>
+      <div class="marquee-item text">💛 Available in All Shapes 💛</div>
+      <div class="marquee-item image"><img src="assets/4.png" alt="Scroll 1"></div>
+      <div class="marquee-item text">🌿 Order Now 🌿</div>
+      <div class="marquee-item image"><img src="assets/5.png" alt="Scroll 2"></div>
+      
+      <!-- Duplicate the same content for infinite scrolling effect -->
+      <div class="marquee-item text">💛 Made with love 💛</div>
+      <div class="marquee-item image"><img src="assets/1.png" alt="Scroll 1"></div>
+      <div class="marquee-item text">🌿 Exporting Globally 🌿</div>
+      <div class="marquee-item image"><img src="assets/2.png" alt="Scroll 2"></div>
+      <div class="marquee-item text">👩‍🌾 Sourced from Farmers 👩‍🌾</div>
+      <div class="marquee-item image"><img src="assets/3.png" alt="Scroll 3"></div>
+      <div class="marquee-item text">💛 Available in All Shapes 💛</div>
+      <div class="marquee-item image"><img src="assets/4.png" alt="Scroll 1"></div>
+      <div class="marquee-item text">🌿 Order Now 🌿</div>
+      <div class="marquee-item image"><img src="assets/5.png" alt="Scroll 2"></div>
+    </div>
+  </section>
+  
+
   
   <!-- INFO SECTION BELOW HERO -->
   <section class="info-section">
