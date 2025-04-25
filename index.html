@@ -106,6 +106,10 @@
       z-index: 1000;
     }
 
+    .side-drawer.open {
+      left: 0; /* This makes the drawer visible when the 'open' class is added */
+    }
+
     .side-drawer a {
       padding: 15px 25px;
       border-bottom: 1px solid #eee;
@@ -216,96 +220,93 @@
     }
 
     .carousel {
-    position: relative;
-    max-width: 100%;
-    height: 90vh;
-    overflow: hidden;
-  }
+      position: relative;
+      max-width: 100%;
+      height: 90vh;
+      overflow: hidden;
+    }
 
-  .carousel-images {
-    height: 100%;
-    width: 100%;
-  }
+    .carousel-images {
+      height: 100%;
+      width: 100%;
+    }
 
-  .carousel-images img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+    .carousel-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-  @keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -40%);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+    }
 
-.hero-text {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #575648;
-  font-size: clamp(2rem, 8vw, 5rem);
-  letter-spacing: 0.5em;
-  font-weight: bold;
-  opacity: 0;
-  text-align: center;
-  white-space: nowrap;
-  z-index: 2;
-  pointer-events: none;
-  animation: fadeIn 1.5s ease forwards;
-}
-
-
-  /* Smaller font on mobile */
-  @media (max-width: 768px) {
     .hero-text {
-      font-size: clamp(1.5rem, 6.5vw, 3.5rem);
-      letter-spacing: 0.3em;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #575648;
+      font-size: clamp(2rem, 8vw, 5rem);
+      letter-spacing: 0.5em;
+      font-weight: bold;
+      opacity: 0;
+      text-align: center;
+      white-space: nowrap;
+      z-index: 2;
+      pointer-events: none;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    /* Smaller font on mobile */
+    @media (max-width: 768px) {
+      .hero-text {
+        font-size: clamp(1.5rem, 6.5vw, 3.5rem);
+        letter-spacing: 0.3em;
+      }
+
+      .desktop-img {
+        display: none;
+      }
+
+      .mobile-img {
+        display: block;
+      }
     }
 
     .desktop-img {
-      display: none;
+      display: block;
     }
 
     .mobile-img {
-      display: block;
+      display: none;
     }
-  }
 
-  .desktop-img {
-    display: block;
-  }
+    .view-products-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #9BA17B;
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      z-index: 3;
+    }
 
-  .mobile-img {
-    display: none;
-  }
-
-  .view-products-btn {
-    position: absolute;
-    top: 50%; /* Adjust this value to control the vertical placement */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #9BA17B;
-    color: white;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-    z-index: 3;
-  }
-
-  .view-products-btn:hover {
-    background-color: #7a8a5a;
-  }
-
-
+    .view-products-btn:hover {
+      background-color: #7a8a5a;
+    }
 
   </style>
 </head>
@@ -324,7 +325,7 @@
 
       <!-- Centered Logo -->
       <div class="logo">
-        <img src="/mnt/data/the terra leaf logo.png" alt="The Terra Leaf Logo" />
+        <img src="assets/terraleaf.png" alt="The Terra Leaf Logo" />
       </div>
 
       <!-- Nav Menu -->
@@ -347,16 +348,13 @@
 
   <!-- FULLSCREEN CAROUSEL -->
   <section class="carousel">
-    <div class="carousel-images">
-      <img src="assets/plates.png" alt="Hero Slide" class="desktop-img" />
-      <img src="assets/plates-mobile.png" alt="Hero Slide Mobile" class="mobile-img" />
-    </div>
+    <picture class="carousel-images">
+      <source media="(max-width: 768px)" srcset="assets/plates-mobile.png" />
+      <img src="assets/plates.png" alt="Hero Slide" />
+    </picture>
     <div class="hero-text">THE TERRA LEAF</div>
-    <!-- View Products Button -->
     <a href="#products" class="view-products-btn">Our Collection</a>
-  </section>
-  
-
+  </section>  
   
   <!-- INFO SECTION BELOW HERO -->
   <section class="info-section">
