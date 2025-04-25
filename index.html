@@ -337,7 +337,7 @@
     }
 
     .marquee-item.image img {
-      height: 70px;
+      height: 90px;
       border-radius: 8px;
       object-fit: cover;
     }
@@ -352,6 +352,19 @@
       }
     }
 
+    /* Adjust speed for mobile screens */
+    @media (max-width: 768px) {
+      .marquee-track {
+        animation-duration: 5s; /* Slower speed on mobile */
+      }
+    }
+
+    /* Adjust speed for larger screens (Desktop) */
+    @media (min-width: 769px) {
+      .marquee-track {
+        animation-duration: 10s; /* Faster speed on desktop */
+      }
+    }
 
 
   </style>
