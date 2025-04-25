@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Products</title>
+  <style>
+    /* Basic styling for the page */
+    /* Basic styling for the page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 10;
+  padding: 10;
+  box-sizing: border-box;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 50px 20px;
+}
+
+.info-box {
+  flex: 1 1 300px;
+  background-color: #F4F3EF;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer; /* Makes it clickable */
+}
+
+.info-box img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.info-box h3 {
+  margin-bottom: 10px;
+  color: #9BA17B;
+}
+
+.info-box p {
+  font-size: 16px;
+}
+
+/* Media query for mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .info-section {
+    flex-direction: row; /* Align items in a row */
+    justify-content: center;
+  }
+
+  .info-box {
+    flex: 1 1 calc(50% - 20px); /* Two items per row, 50% width minus gap */
+    margin-bottom: 20px; /* Add space between rows */
+  }
+}
+
+
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4); /* Fallback for transparency */
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      box-sizing: border-box; /* To ensure the button fits inside */
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: #9BA17B;
+    }
+
+    .modal-body p {
+      font-size: 16px;
+    }
+
+    /* Styling for the Buy Now button */
+    .buy-now-btn {
+      background-color: #25D366; /* WhatsApp green */
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      margin-top: 20px;
+      width: 100%; /* Ensure it takes up full width of modal */
+      box-sizing: border-box; /* To avoid overflow */
+      text-align: center; /* Center the text */
+    }
+
+    .buy-now-btn:hover {
+      background-color: #128C7E;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align: center; background-color: white; margin-top: 30px;">All Our Products</h2>
+
+  <section class="info-section">
+    <!-- Product 1 -->
+    <div class="info-box" onclick="openModal(1)">
+      <img src="assets/6.png" alt="Rectangle Trays">
+      <h3>Rectangle Trays</h3>
+    </div>
+    <!-- Product 2 -->
+    <div class="info-box" onclick="openModal(2)">
+      <img src="assets/5.png" alt="Square Plates">
+      <h3>Square Plates</h3>
+    </div>
+    <!-- Product 3 -->
+    <div class="info-box" onclick="openModal(3)">
+      <img src="assets/4.png" alt="Cutlerys">
+      <h3>Cutlerys</h3>
+    </div>
+    <!-- Product 4 -->
+    <div class="info-box" onclick="openModal(4)">
+      <img src="assets/7.png" alt="Bowls">
+      <h3>Bowls</h3>
+    </div>
+    <!-- Product 5 -->
+    <div class="info-box" onclick="openModal(5)">
+      <img src="assets/1.png" alt="Tear Drop Plate">
+      <h3>Tear Drop Plate</h3>
+    </div>
+    <!-- Product 6 -->
+    <div class="info-box" onclick="openModal(6)">
+      <img src="assets/3.png" alt="Heart Shape">
+      <h3>Heart Shape</h3>
+    </div>
+    <!-- Product 7 -->
+    <div class="info-box" onclick="openModal(7)">
+      <img src="assets/2.png" alt="Round Plates">
+      <h3>Round Plates</h3>
+    </div>
+  </section>
+
+  <!-- Modal Template -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+      </div>
+      <div class="modal-body">
+        <h3>Variants:</h3>
+        <ul id="modal-variants"></ul>
+        <h3>Uses:</h3>
+        <p id="modal-uses"></p>
+        <!-- Buy Now Button -->
+        <a id="modal-buy-btn" class="buy-now-btn" target="_blank" href="#">
+          Buy Now on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Product data (can be fetched from a database or API in real-world use)
+    const products = [
+      {
+        title: 'Rectangle Trays',
+        image: 'assets/6.png',
+        variants: ['9" x 6" Rectangle Trays'],
+        uses: 'Ideal for serving food, snacks, or as a decorative tray.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Rectangle%20Trays'
+      },
+      {
+        title: 'Square Plates',
+        image: 'assets/5.png',
+        variants: ['4"x 4" Square Plate', '6"x 6" Square Plate','7"x 7" Square Plate','8"x 8" Square Plate','10"x 10" Square Plate'],
+        uses: 'Perfect for serving individual portions or desserts.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Square%20Plates'
+      },
+      {
+        title: 'Cutlerys',
+        image: 'assets/4.png',
+        variants: ['6" Birchwood Fork', '6" Birchwood Spoon', '6" Birchwood Knives'],
+        uses: 'Essential for serving meals and dining.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Cutlerys'
+      },
+      {
+        title: 'Bowls',
+        image: 'assets/7.png',
+        variants: ['6" Round', '5" Round', '4" Round', '2.5" Round'],
+        uses: 'Perfect for soups, salads, or snacks.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Bowls'
+      },
+      {
+        title: 'Tear Drop Plate',
+        image: 'assets/1.png',
+        variants: ['10"', ' 12"'],
+        uses: 'A unique shape for special occasions.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Tear%20Drop%20Plate'
+      },
+      {
+        title: 'Heart Shape',
+        image: 'assets/3.png',
+        variants: ['6.5"'],
+        uses: 'Ideal for serving sweets or snacks with love.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Heart%20Shape'
+      },
+      {
+        title: 'Round Plates',
+        image: 'assets/2.png',
+        variants: ['6" Round Plates', '7" Round Plates', '10" Round Plates', '12" Round Plates'],
+        uses: 'Perfect for meals, desserts, or snacks.',
+        whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Round%20Plates'
+      }
+    ];
+
+    // Open the modal with the respective product data
+    function openModal(productIndex) {
+      const product = products[productIndex - 1]; // Adjust index since array is 0-based
+
+      document.getElementById('modal-title').innerText = product.title;
+      document.getElementById('modal-uses').innerText = product.uses;
+      
+      const variantsList = document.getElementById('modal-variants');
+      variantsList.innerHTML = ''; // Clear previous list
+      product.variants.forEach(variant => {
+        const li = document.createElement('li');
+        li.innerText = variant;
+        variantsList.appendChild(li);
+      });
+
+      document.getElementById('modal-buy-btn').href = product.whatsapp;
+
+      document.getElementById('modal').style.display = "block";
+    }
+
+    // Close the modal
+    function closeModal() {
+      document.getElementById('modal').style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

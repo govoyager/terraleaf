@@ -13,13 +13,13 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #F4F3EF;
+      background-color: #ffffff;
       color: #2E2E2E;
       overflow-x: hidden;
     }
 
     header {
-      background-color: #F4F3EF;
+      background-color: #ffffff;
       padding: 15px 20px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       position: relative;
@@ -112,7 +112,7 @@
 
     .side-drawer a {
       padding: 15px 25px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #ffffff;
       color: #2E2E2E;
       font-size: 18px;
     }
@@ -138,18 +138,56 @@
       }
     }
 
+
+    /* Info Section */
+    .info-section {
+      display: flex;
+      justify-content: space-around;
+      align-items: stretch;
+      flex-wrap: wrap;
+      padding: 50px 20px;
+      gap: 20px;
+      background-color: #fff;
+    }
+
+    .info-box {
+      flex: 1 1 300px;
+      background-color: #F4F3EF;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .info-box img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      color: #9BA17B;
+    }
+
+    .info-box p {
+      font-size: 16px;
+    }
+
     /* Carousel */
     .carousel {
       position: relative;
       max-width: 100%;
-      height: 90vh;
+      height: 100vh;
       overflow: hidden;
     }
 
     .carousel-images {
       display: flex;
       transition: transform 0.5s ease-in-out;
-      height: 90%;
+      height: 100%;
     }
 
     .carousel-images img {
@@ -182,42 +220,89 @@
       background-color: rgba(0, 0, 0, 0.7);
     }
 
-    /* Info Section */
-    .info-section {
-      display: flex;
-      justify-content: space-around;
-      align-items: stretch;
-      flex-wrap: wrap;
-      padding: 50px 20px;
-      gap: 20px;
-      background-color: #fff;
-    }
+/* Info Section */
+.info-section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap; /* Wrapping enabled for larger screens */
+  padding: 15px 20px;
+  gap: 20px;
+  background-color: #fff;
+  overflow-x: hidden; /* Hide horizontal scroll on larger screens */
+}
 
-    .info-box {
-      flex: 1 1 300px;
-      background-color: #F4F3EF;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
+/* Info Box */
+.info-box {
+  flex: 1 1 300px;
+  background-color: #F4F3EF;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
 
-    .info-box img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
+.info-box img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
-    .info-box h3 {
-      margin-bottom: 10px;
-      color: #9BA17B;
-    }
+.info-box h3 {
+  margin-bottom: 10px;
+  color: #9BA17B;
+}
 
-    .info-box p {
-      font-size: 16px;
-    }
+.info-box p {
+  font-size: 16px;
+}
+
+/* See More Button Section */
+.see-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.see-more-btn button {
+  font-size: 18px;
+  background-color: #9BA17B;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.see-more-btn button:hover {
+  background-color: #7a8b5b;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .info-section {
+    gap: 15px;
+    padding: 20px 10px;
+    flex-wrap: nowrap; /* Allow horizontal scroll on mobile */
+  }
+
+  .info-box {
+    flex: 0 0 200px; /* Smaller size on mobile */
+  }
+
+  .info-section {
+    overflow-x: auto; /* Enable horizontal scrolling on mobile */
+    scroll-snap-type: x mandatory; /* For smooth scroll snapping */
+  }
+
+  .info-box {
+    scroll-snap-align: start; /* Ensure smooth scroll snapping */
+  }
+}
 
     .carousel {
       position: relative;
@@ -262,7 +347,7 @@
       white-space: nowrap;
       z-index: 2;
       pointer-events: none;
-      animation: fadeIn 1.5s ease forwards;
+      animation: fadeIn 3s ease forwards;
     }
 
     /* Smaller font on mobile */
@@ -289,20 +374,34 @@
       display: none;
     }
 
+    @keyframes slideUp {
+      from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
     .view-products-btn {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       background-color: #9BA17B;
       color: white;
       padding: 10px 20px;
       font-size: 18px;
-      border-radius: 25px;
+      border-radius: 8px;
       text-decoration: none;
       transition: background-color 0.3s ease;
       z-index: 3;
+
+      animation: slideUp 1s ease-out forwards;
     }
+
 
     .view-products-btn:hover {
       background-color: #7a8a5a;
@@ -314,20 +413,23 @@
       background-color: #fff;
       border-top: 2px solid #eee;
       border-bottom: 2px solid #eee;
-      padding: 10px 0;
+      padding: 0px 0;
     }
 
     .marquee-track {
       display: flex;
-      animation: marqueeScroll 20s linear infinite;
+      white-space: nowrap;
+      animation: marqueeScrollMobile linear infinite;
+      animation-duration: 10s; /* Default mobile speed */
     }
 
-    /* Faster on larger screens (desktop) */
     @media (min-width: 768px) {
       .marquee-track {
-        animation-duration: 10s;
+        animation-name: marqueeScrollDesktop;
+        animation-duration: 15s; /* Faster on desktop */
       }
     }
+
 
     /* Slower on smaller screens (mobile) */
     @media (max-width: 767px) {
@@ -357,25 +459,80 @@
       object-fit: cover;
     }
 
-    @keyframes marqueeScroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%); /* Moves the track completely */
-      }
-    }
+    @keyframes marqueeScrollMobile {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 
-    /* Welcome message */
-    .welcome-message {
-      background-color: #f4f4f4;
-      padding: 20px;
-      text-align: center;
-      font-size: 18px;
-      color: #333;
-      font-family: 'Arial', sans-serif;
-      margin-top: 20px;
-    }
+@keyframes marqueeScrollDesktop {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+.welcome {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.welcome-card {
+  background-color: rgb(241, 198, 133);
+  padding: 40px;
+  border-radius: 16px;
+  width: 90vw;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card h1 {
+  font-size: 36px;
+  color: #222831;
+  margin-bottom: 20px;
+}
+
+.welcome-card p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.welcome-card .btn {
+  background-color: #76ABAE;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-card .btn:hover {
+  background-color: #5d8f92;
+}
+
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
   </style>
 </head>
@@ -409,7 +566,7 @@
 
   <!-- SIDE DRAWER FOR SMALL SCREEN -->
   <div class="side-drawer" id="sideDrawer">
-    <a href="#">Home</a>
+    <a href="#home">Home</a>
     <a href="#">About</a>
     <a href="#">Products</a>
     <a href="#">Contact</a>
@@ -422,8 +579,8 @@
       <img src="assets/plates.png" alt="Hero Slide" />
     </picture>
     <div class="hero-text">THE TERRA LEAF</div>
-    <a href="#products" class="view-products-btn">Our Collection</a>
-  </section>  
+    <a href="#info-section" class="view-products-btn">Our Collection</a>
+  </section>
   
 
   <div class="promo-marquee">
@@ -454,37 +611,63 @@
     </div>
   </div>
 
-  <div class="welcome-message">
-    Welcome to The Terra Leaf, your trusted source for sustainable, eco-friendly tableware. We are dedicated to transforming disposable dining with high-quality, natural products that support an environmentally responsible lifestyle. By choosing The Terra Leaf, you are embracing a cleaner, greener future.
-  </div>
-
-  
-
-  
-  <!-- INFO SECTION BELOW HERO -->
-  <section class="info-section">
-    <div class="info-box">
-      <img src="assets/img1.jpg" alt="Feature 1">
-      <h3>Eco-Friendly</h3>
-      <p>Our products are made with sustainability and the environment in mind.</p>
-    </div>
-    <div class="info-box">
-      <img src="assets/img2.jpg" alt="Feature 2">
-      <h3>Natural Ingredients</h3>
-      <p>Only the finest natural and organic ingredients go into our products.</p>
-    </div>
-    <div class="info-box">
-      <img src="assets/img3.jpg" alt="Feature 3">
-      <h3>Handcrafted</h3>
-      <p>Lovingly made by hand to ensure quality and care in every item.</p>
+  <section class="welcome" id="home">
+    <div class="welcome-card">
+      <h1>Welcome to The Terra Leaf</h1>
+      <p>Welcome to The Terra Leaf, your trusted source for sustainable,
+        eco-friendly tableware. We are dedicated to transforming disposable dining
+        with high-quality, natural products that support an environmentally
+        responsible lifestyle.</p>
+      <a href="#products" class="btn">Explore Now</a>
     </div>
   </section>
+ 
+
+
+  <h2 style="text-align: center; background-color: white; margin-top: 30px;">What We Can Offer</h2>
+  <section class="info-section" id ="info-section">
+    <div class="info-box">
+      <img src="assets/6.png" alt="Eco-Friendly">
+      <h3>Rectangle Trays</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/5.png" alt="Natural Ingredients">
+      <h3>Square Plates</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/4.png" alt="Handcrafted">
+      <h3>Cutlerys</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/7.png" alt="Handcrafted">
+      <h3>Bowls</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/1.png" alt="Handcrafted">
+      <h3>Tear Drop Plate</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/3.png" alt="Handcrafted">
+      <h3>Heart Shape</h3>
+    </div>
+    <div class="info-box">
+      <img src="assets/2.png" alt="Handcrafted">
+      <h3>Round Plates</h3>
+    </div>
+    <!-- See More Button at the center, below the cards -->
+  </section>
+  <section class="see-more-btn">
+    <button onclick="window.location.href='products.html'">See More</button>
+  </section>
+     
 
   <script>
-    function toggleDrawer() {
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
       document.getElementById('sideDrawer').classList.toggle('open');
-    }
+    });
   </script>
+  
+
 
 </body>
 </html>
