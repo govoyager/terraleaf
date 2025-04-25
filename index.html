@@ -319,7 +319,7 @@
 
     .marquee-track {
       display: flex;
-      animation: marqueeScroll 10s linear infinite;
+      animation: marqueeScroll 20s linear infinite;
     }
 
     .marquee-item {
@@ -342,31 +342,26 @@
       object-fit: cover;
     }
 
-    /* Ensure the track scrolls infinitely */
     @keyframes marqueeScroll {
       0% {
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-50%); /* Moves to half the track's total width */
+        transform: translateX(-100%); /* Moves the track completely */
       }
     }
 
-    /* Adjust speed for mobile screens */
-    @media (max-width: 768px) {
-      .marquee-track {
-        animation-duration: 5s; /* Slower speed on mobile */
-      }
+    /* Welcome message */
+    .welcome-message {
+      background-color: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      font-family: 'Arial', sans-serif;
+      margin-top: 20px;
     }
-
-    /* Adjust speed for larger screens (Desktop) */
-    @media (min-width: 769px) {
-      .marquee-track {
-        animation-duration: 10s; /* Faster speed on desktop */
-      }
-    }
-
-
+    
   </style>
 </head>
 <body>
@@ -416,7 +411,7 @@
   </section>  
   
 
-  <section class="promo-marquee">
+  <div class="promo-marquee">
     <div class="marquee-track">
       <!-- Text and images inside the marquee -->
       <div class="marquee-item text">💛 Made with love 💛</div>
@@ -429,8 +424,8 @@
       <div class="marquee-item image"><img src="assets/4.png" alt="Scroll 1"></div>
       <div class="marquee-item text">🌿 Order Now 🌿</div>
       <div class="marquee-item image"><img src="assets/5.png" alt="Scroll 2"></div>
-      
-      <!-- Duplicate the same content for infinite scrolling effect -->
+
+      <!-- Duplicate the same items to create the circular effect -->
       <div class="marquee-item text">💛 Made with love 💛</div>
       <div class="marquee-item image"><img src="assets/1.png" alt="Scroll 1"></div>
       <div class="marquee-item text">🌿 Exporting Globally 🌿</div>
@@ -442,7 +437,12 @@
       <div class="marquee-item text">🌿 Order Now 🌿</div>
       <div class="marquee-item image"><img src="assets/5.png" alt="Scroll 2"></div>
     </div>
-  </section>
+  </div>
+
+  <div class="welcome-message">
+    Welcome to The Terra Leaf, your trusted source for sustainable, eco-friendly tableware. We are dedicated to transforming disposable dining with high-quality, natural products that support an environmentally responsible lifestyle. By choosing The Terra Leaf, you are embracing a cleaner, greener future.
+  </div>
+
   
 
   
