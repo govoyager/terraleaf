@@ -296,6 +296,9 @@
       .info-box {
         scroll-snap-align: start; /* Ensure smooth scroll snapping */
       }
+      .carousel-buttons{
+        display: none;
+      }
     }
 
     @keyframes fadeIn {
@@ -315,7 +318,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       color: #ffffff;
-      font-size: clamp(2rem, 8vw, 5rem);
+      font-size: clamp(2rem, 6vw, 5rem);
       letter-spacing: 0.5em;
       font-weight: bold;
       opacity: 0;
@@ -365,7 +368,7 @@
       .hero-subtext {
         font-size: 4vw;
         letter-spacing: 0.2em;
-        top: 53%;
+        top: 52%;
       }
 
       .desktop-img {
@@ -678,7 +681,7 @@
       background-color: #222831;
       color: #ffffff;
       padding: 40px 20px 20px;
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
 
     .footer-content {
@@ -727,6 +730,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        gap: 5px;
       }
 
       .contact-info, .map-container {
@@ -1012,11 +1016,40 @@ cater to global markets.</p>
   
      
   <script>
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.getElementById('sideDrawer').classList.toggle('open');
+    // Get the menu toggle button, side drawer, and document
+    const menuToggle = document.querySelector('.menu-toggle');
+    const sideDrawer = document.getElementById('sideDrawer');
+    const menuLinks = document.querySelector('.nav-links'); // Container for the menu links
+    
+    // Toggle the side drawer when the menu button is clicked
+    menuToggle.addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent event from bubbling up to document
+      sideDrawer.classList.toggle('open');
+    });
+  
+    // Close the side drawer when a menu item is clicked
+    const menuItems = document.querySelectorAll('.nav-links a'); // All menu items
+  
+    menuItems.forEach(item => {
+      item.addEventListener('click', function() {
+        sideDrawer.classList.remove('open'); // Close the menu
+      });
+    });
+  
+    // Close the side drawer when clicking outside the menu area
+    document.addEventListener('click', function(event) {
+      // Check if the click was outside the side drawer and menu toggle
+      if (!sideDrawer.contains(event.target) && !menuToggle.contains(event.target)) {
+        sideDrawer.classList.remove('open'); // Close the menu
+      }
+    });
+  
+    // Prevent clicks inside the side drawer from closing it
+    sideDrawer.addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent event from bubbling up to document
     });
   </script>
-  
+ 
 
 
 </body>

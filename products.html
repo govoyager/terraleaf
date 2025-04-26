@@ -139,125 +139,268 @@ header {
     }
 
 
-/* Basic styling for the page */
-body {
-  font-family: Arial, sans-serif;
-  margin: 10;
-  padding: 10;
-  box-sizing: border-box;
-}
+    /* Basic styling for the page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 10;
+      padding: 10;
+      box-sizing: border-box;
+    }
 
-.info-section {
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap onto the next line */
-  gap: 20px; /* Space between items */
-  padding: 50px 20px;
-}
+    .info-section {
+      display: flex;
+      flex-wrap: wrap; /* Allows items to wrap onto the next line */
+      gap: 20px; /* Space between items */
+      padding: 50px 20px;
+    }
 
-.info-box {
-  flex: 1 1 calc(33.333% - 20px); /* Default to 3 items per row (desktop) */
-  background-color: #F4F3EF;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
+    .info-box {
+      flex: 1 1 calc(33.333% - 20px); /* Default to 3 items per row (desktop) */
+      background-color: #F4F3EF;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
 
-/* Image styling */
-.info-box img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
+    /* Image styling */
+    .info-box img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
 
-.info-box h3 {
-  margin-bottom: 10px;
-  color: #9BA17B;
-}
+    .info-box h3 {
+      margin-bottom: 10px;
+      color: #9BA17B;
+    }
 
-.info-box p {
-  font-size: 16px;
-}
+    .info-box p {
+      font-size: 16px;
+    }
 
-/* Media query for mobile (max-width: 768px) */
-@media (max-width: 768px) {
-  .info-box {
-    flex: 1 1 calc(50% - 20px); /* 2 items per row on mobile */
-  }
-}
-
-
-
+    /* Media query for mobile (max-width: 768px) */
+    @media (max-width: 768px) {
+      .info-box {
+        flex: 1 1 calc(50% - 20px); /* 2 items per row on mobile */
+      }
+    }
 
     /* Modal styles */
     .modal {
       display: none; /* Hidden by default */
-      position: fixed;
+      position: fixed; /* Fixed position */
       z-index: 1; /* Sit on top */
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.4); /* Fallback for transparency */
+      background-color: rgba(0, 0, 0, 0.6); /* Dark background */
+      overflow: auto; /* Enable scrolling if needed */
       padding-top: 60px;
+      transition: opacity 0.3s ease-in-out; /* Smooth fade-in/out */
     }
 
     .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
+      background-color: white;
+      margin: 5% auto; /* Center the modal */
       padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 500px;
       border-radius: 10px;
-      box-sizing: border-box; /* To ensure the button fits inside */
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
+      width: 80%; /* Set width of the modal */
+      max-width: 600px; /* Max width */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out; /* Smooth transition */
     }
 
     .modal-header h2 {
       margin: 0;
-      color: #9BA17B;
+      font-size: 24px;
+      font-weight: bold;
+      color: #222831; /* Dark color for the title */
+      text-align: center;
     }
 
-    .modal-body p {
+    .modal-body {
+      padding-top: 10px;
+      font-family: 'Arial', sans-serif;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #cf4c2b; /* Accent color */
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 5px 0;
       font-size: 16px;
+      color: #333; /* Slightly lighter text color */
     }
 
-    /* Styling for the Buy Now button */
+    #modal-uses {
+      font-size: 16px;
+      color: #333;
+    }
+
     .buy-now-btn {
-      background-color: #25D366; /* WhatsApp green */
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #cf4c2b;
       color: white;
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
       text-decoration: none;
-      display: block;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
       margin-top: 20px;
-      width: 100%; /* Ensure it takes up full width of modal */
-      box-sizing: border-box; /* To avoid overflow */
-      text-align: center; /* Center the text */
+      transition: background-color 0.3s ease;
     }
 
     .buy-now-btn:hover {
-      background-color: #128C7E;
+      background-color: #ffd700; /* Hover effect */
+      color: #222831;
     }
+
+    /* Close Button */
+    .close {
+      color: #aaa;
+      font-size: 30px;
+      font-weight: bold;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #222831;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Modal Animation */
+    @keyframes modalFadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes modalFadeOut {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    /* Modal Fade-in and Fade-out for show and close */
+    .modal.show {
+      display: block;
+      animation: modalFadeIn 0.4s ease-in-out;
+    }
+
+    .modal.hide {
+      display: block;
+      animation: modalFadeOut 0.4s ease-in-out;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 90%; /* Make modal smaller on mobile */
+      }
+
+      .modal-header h2 {
+        font-size: 20px; /* Smaller title font */
+      }
+
+      h3 {
+        font-size: 16px; /* Adjust subheading size */
+      }
+
+      .buy-now-btn {
+        padding: 10px 18px; /* Smaller button on mobile */
+        font-size: 14px;
+      }
+    }
+
+
+    /*footer*/
+    .footer {
+      background-color: #222831;
+      color: #ffffff;
+      padding: 40px 20px 20px;
+      font-size: 1.5rem;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .contact-info {
+      flex: 1 1 300px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #cf4c2b;
+    }
+
+    .contact-info p, .contact-info a {
+      margin: 8px 0;
+      color: #ddd;
+      text-decoration: none;
+    }
+
+    .map-container {
+      flex: 1 1 400px;
+      min-height: 250px;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 5px;
+      }
+
+      .contact-info, .map-container {
+        width: 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -341,23 +484,67 @@ body {
 
   <!-- Modal Template -->
   <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <div class="modal-header">
-        <h2 id="modal-title"></h2>
-      </div>
-      <div class="modal-body">
-        <h3>Variants:</h3>
-        <ul id="modal-variants"></ul>
-        <h3>Uses:</h3>
-        <p id="modal-uses"></p>
-        <!-- Buy Now Button -->
-        <a id="modal-buy-btn" class="buy-now-btn" target="_blank" href="#">
-          Buy Now
-        </a>
-      </div>
+  <div class="modal-content">
+    <!-- Close Button -->
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2 id="modal-title">Product Title</h2>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <h3>Variants:</h3>
+      <ul id="modal-variants">
+        <li>Variant 1</li>
+        <li>Variant 2</li>
+        <li>Variant 3</li>
+      </ul>
+
+      <h3>Uses:</h3>
+      <p id="modal-uses">This product can be used for various purposes including...</p>
+
+      <!-- Buy Now Button -->
+      <a id="modal-buy-btn" class="buy-now-btn" target="_blank" href="#">
+        Buy Now
+      </a>
     </div>
   </div>
+</div>
+
+
+
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+  
+      <div class="contact-info">
+        <h3>Reach us at</h3>
+        <p>📞 +91 9345326030</p>
+        <p>📞 +91 9514171946</p>
+        <p>📧 <a href="mailto:info@theterraleafs.com">info@theterraleafs.com        </a></p>
+        <p>🏠 No.12, Velusamypuram, 2nd Street, Karur - 639002, TamilNadu, India - IN        </p>
+      </div>
+
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.0433283451574!2d78.05125359999999!3d10.966964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f1cc7e28c9f%3A0x6b40776ae9761ca1!2sVeluswamypuram%2C%20Karur%2C%20Tamil%20Nadu%20639002!5e0!3m2!1sen!2sin!4v1714227300768!5m2!1sen!2sin"
+          width="100%"
+          height="250"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+          
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Terra Leaf. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <script>
     document.querySelector('.menu-toggle').addEventListener('click', function() {
@@ -399,14 +586,14 @@ body {
       {
         title: 'Tear Drop Plate',
         image: 'assets/1.png',
-        variants: ['10"', ' 12"'],
+        variants: ['10" Tear Drop Plate', ' 12" Tear Drop Plate'],
         uses: 'A unique shape for special occasions.',
         whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Tear%20Drop%20Plate'
       },
       {
         title: 'Heart Shape',
         image: 'assets/3.png',
-        variants: ['6.5"'],
+        variants: ['6.5" Heart Shape Plate'],
         uses: 'Ideal for serving sweets or snacks with love.',
         whatsapp: 'https://wa.me/+919514171946?text=I%20am%20interested%20in%20buying%20Heart%20Shape'
       },
@@ -420,6 +607,7 @@ body {
     ];
 
     // Open the modal with the respective product data
+    // Function to open the modal
     function openModal(productIndex) {
       const product = products[productIndex - 1]; // Adjust index since array is 0-based
 
@@ -436,13 +624,21 @@ body {
 
       document.getElementById('modal-buy-btn').href = product.whatsapp;
 
+      // Display the modal
       document.getElementById('modal').style.display = "block";
     }
 
-    // Close the modal
-    function closeModal() {
-      document.getElementById('modal').style.display = "none";
+    // Function to close the modal
+    function closeModal(event) {
+      // Check if the click was outside the modal-content, or on the close button
+      if (event.target === document.getElementById('modal') || event.target === document.querySelector('.close')) {
+        document.getElementById('modal').style.display = "none";
+      }
     }
+
+    // Add event listener to close modal when clicked outside the modal content
+    document.getElementById('modal').addEventListener('click', closeModal);
+
   </script>
 
 </body>
