@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/terraleaf.png">
   <title>All Products</title>
   <style>
 
@@ -25,25 +26,27 @@ header {
       position: relative;
     }
 
-    .search-form {
-      display: flex;
-      gap: 5px;
-    }
-
-    .search-form input[type="text"] {
-      padding: 6px 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .search-form button {
-      padding: 6px 12px;
-      background-color: #9BA17B;
-      border: none;
+    .call-us-button a {
+      background-color: #5baa5d; /* Green button */
       color: white;
-      border-radius: 4px;
-      cursor: pointer;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Space between icon and text */
+      transition: background-color 0.3s ease;
+    }
+
+    .call-us-button a:hover {
+      background-color: #45a049;
+    }
+
+    .call-icon {
+      width: 20px;
+      height: 20px;
+      fill: white; /* ensure icon stays white */
     }
 
     .menu-toggle {
@@ -264,14 +267,18 @@ body {
           <button class="menu-toggle" onclick="toggleDrawer()">☰</button>
     
           <!-- Search Form -->
-          <form class="search-form" action="/search" method="GET">
-            <input type="text" name="q" placeholder="Search...">
-            <button type="submit">Search</button>
-          </form>
+          <div class="call-us-button">
+            <a href="tel:+919514171946">
+              <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.78 19.78 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 8.63 19.78 19.78 0 0 1 0 0h3a2 2 0 0 1 2 1.72c.2 1.43.77 2.82 1.72 4.07a2 2 0 0 1-.45 2.59l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.59-.45c1.25.95 2.64 1.52 4.07 1.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call Us
+            </a>
+          </div>
     
           <!-- Centered Logo -->
           <div class="logo">
-            <img src="assets/terraleaf.png" alt="The Terra Leaf Logo" />
+            <a href="index.html"><img src="assets/terraleaf.png" alt="The Terra Leaf Logo" /></a>
           </div>
     
           <!-- Nav Menu -->
