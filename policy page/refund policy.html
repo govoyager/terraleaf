@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="assets/terraleaf.png">
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | The Terra Leaf</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff;
+      color: #222831;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* Centered Policy Header */
+    .policy-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px 30px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      color: #cf4c2b;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+    }
+
+    a {
+      color: #cf4c2b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 1001;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .call-us-button a {
+      background-color: #9BA17B; /* Green button */
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Space between icon and text */
+      transition: background-color 0.3s ease;
+    }
+
+    .call-us-button a:hover {
+      background-color: #509953;
+    }
+
+    .call-icon {
+      width: 20px;
+      height: 20px;
+      fill: white; /* ensure icon stays white */
+    }
+
+    .menu-toggle {
+      font-size: 26px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #2E2E2E;
+      display: none;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2E2E2E;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a.active {
+        color: white;
+        background-color: #9BA17B; /* Orange background for highlighting */
+        border-radius: 5px;
+        padding: 5px 5px;
+    }
+
+    .nav-links a:hover {
+      color: #000000;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      width: 250px;
+      background-color: #ffffff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .side-drawer.open {
+      left: 0; /* This makes the drawer visible when the 'open' class is added */
+    }
+
+    .side-drawer a {
+      padding: 15px 25px;
+      border-bottom: 1px solid #ffffff;
+      color: #2E2E2E;
+      font-size: 18px;
+    }
+
+    .side-drawer a:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links,
+      .search-form {
+        display: none;
+      }
+
+      .logo {
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+      }
+    }
+
+
+    /* Footer */
+    .footer {
+        background-color: #222831;
+        color: #ffffff;
+        padding: 40px 20px 20px;
+        font-size: 0.9rem;
+        font-family: 'Mulish', sans-serif;
+    }
+
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .footer-column {
+      flex: 1 1 250px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #cf4c2b;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffffff;
+    }
+
+    .contact-info p, .contact-info a {
+      margin: 8px 0;
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .map-container-full {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .footer-column {
+        width: 100%;
+      }
+
+      .map-container-full iframe {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+          <button class="menu-toggle" onclick="toggleDrawer()">☰</button>
+      
+          <!-- Call Us Button -->
+          <div class="call-us-button">
+            <a href="tel:+919514171946">
+              <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.78 19.78 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 8.63 19.78 19.78 0 0 1 0 0h3a2 2 0 0 1 2 1.72c.2 1.43.77 2.82 1.72 4.07a2 2 0 0 1-.45 2.59l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.59-.45c1.25.95 2.64 1.52 4.07 1.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call Us
+            </a>
+          </div>
+          
+      
+          <!-- Centered Logo -->
+          <div class="logo">
+            <a href="../index.html"><img src="../assets/terraleaf.png" alt="The Terra Leaf Logo" /></a>
+          </div>
+      
+          <!-- Nav Menu -->
+          <div class="nav-links">
+            <a href="../index.html" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="products.html">Products</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+    </header>
+      
+    
+      <!-- SIDE DRAWER FOR SMALL SCREEN -->
+    <div class="side-drawer" id="sideDrawer">
+        <a href="#home" class ="active" style="text-decoration: none;">Home</a>
+        <a href="#about" style="text-decoration: none;">About</a>
+        <a href="products.html" style="text-decoration: none;">Products</a>
+        <a href="#contact" style="text-decoration: none;">Contact</a>
+    </div>
+
+  <!-- Centered Header -->
+  <div class="policy-header">
+    <h1>Refund Policy</h1>
+    <p>Effective Date: April 30, 2025</p>
+    <p>At The Terra Leaf, we want you to be completely satisfied with your purchase. If for any reason you are not satisfied with your order, please read our refund policy below to understand how we handle returns and refunds.</p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <!-- Column 1: Know More -->
+      <div class="footer-column">
+        <h3>Know More</h3>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../policy page/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Policies -->
+      <div class="footer-column">
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="../policy page/shipping policy.html">Shipping Policy</a></li>
+          <li><a href="../policy page/refund policy.html">Refund Policy</a></li>
+          <li><a href="../policy page/privacy policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Info -->
+      <div class="footer-column contact-info">
+        <h3>Contact Us</h3>
+        <p>📞 +91 9345326030</p>
+        <p>📞 +91 9514171946</p>
+        <p>📧 <a href="mailto:info@theterraleafs.com">info@theterraleafs.com</a></p>
+        <p>🏠 No.12, Velusamypuram, 2nd Street,<br> Karur - 639002, TamilNadu, India</p>
+      </div>
+    </div>
+
+    <div class="map-container-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.0433283451574!2d78.05125359999999!3d10.966964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f1cc7e28c9f%3A0x6b40776ae9761ca1!2sVeluswamypuram%2C%20Karur%2C%20Tamil%20Nadu%20639002!5e0!3m2!1sen!2sin!4v1714227300768!5m2!1sen!2sin"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Terra Leaf. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

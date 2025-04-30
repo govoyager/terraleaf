@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - The Terra Leaf</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9f6f1;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 1001;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .call-us-button a {
+      background-color: #9BA17B; /* Green button */
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Space between icon and text */
+      transition: background-color 0.3s ease;
+    }
+
+    .call-us-button a:hover {
+      background-color: #6c996f;
+    }
+
+    .call-icon {
+      width: 20px;
+      height: 20px;
+      fill: white; /* ensure icon stays white */
+    }
+
+    .menu-toggle {
+      font-size: 26px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #2E2E2E;
+      display: none;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2E2E2E;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a.active {
+        color: white;
+        background-color: #cf4c2b; /* Orange background for highlighting */
+        border-radius: 5px;
+        padding: 5px 5px;
+    }
+
+    .nav-links a:hover {
+      color: #9BA17B;
+    }
+
+    .side-drawer {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      width: 250px;
+      background-color: #ffffff;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      padding-top: 70px;
+      transition: left 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .side-drawer.open {
+      left: 0; /* This makes the drawer visible when the 'open' class is added */
+    }
+
+    .side-drawer a {
+      padding: 15px 25px;
+      border-bottom: 1px solid #ffffff;
+      color: #2E2E2E;
+      font-size: 18px;
+    }
+
+    .side-drawer a:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links,
+      .search-form {
+        display: none;
+      }
+
+      .logo {
+        left: 50%;
+        transform: translateX(-50%);
+        position: absolute;
+      }
+    }
+
+    .container {
+      max-width: 90vw;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: #2c2c2c;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .intro p {
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #555;
+    }
+
+    .story-section {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+
+    .story-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .story-text h3 {
+      font-size: 26px;
+      color: #cf4c2b;
+      margin-bottom: 15px;
+    }
+
+    .story-text p {
+      font-size: 17px;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .story-img {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .story-img img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-section {
+      background-color: #ffffff;
+      padding: 50px 20px;
+      border-radius: 12px;
+      margin-bottom: 60px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      background-color: #fef3ec;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .feature h4 {
+      color: #cf4c2b;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #222831;
+      color: white;
+      border-radius: 10px;
+    }
+
+    .cta h3 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .cta a {
+      background-color: #cf4c2b;
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .cta a:hover {
+      background-color: #f76b3c;
+    }
+
+    @media (max-width: 768px) {
+      .story-section {
+        flex-direction: column;
+      }
+    }
+
+    /*footer*/
+    .footer {
+        background-color: #222831;
+        color: #ffffff;
+        padding: 40px 20px 20px;
+        font-size: 0.9rem;
+        font-family: 'Mulish', sans-serif;
+    }
+
+
+    .footer-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .footer-column {
+      flex: 1 1 250px;
+    }
+
+    .footer-column h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #cf4c2b;
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-column ul li a {
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .footer-column ul li a:hover {
+      color: #ffffff;
+    }
+
+    .contact-info p, .contact-info a {
+      margin: 8px 0;
+      color: #ddd;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .map-container-full {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .footer-column {
+        width: 100%;
+      }
+
+      .map-container-full iframe {
+        height: 200px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+          <button class="menu-toggle" onclick="toggleDrawer()">☰</button>
+    
+          <!-- Search Form -->
+          <div class="call-us-button">
+            <a href="tel:+919514171946">
+              <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.78 19.78 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.07 8.63 19.78 19.78 0 0 1 0 0h3a2 2 0 0 1 2 1.72c.2 1.43.77 2.82 1.72 4.07a2 2 0 0 1-.45 2.59l-1.27 1.27a16 16 0 0 0 6.58 6.58l1.27-1.27a2 2 0 0 1 2.59-.45c1.25.95 2.64 1.52 4.07 1.72A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call Us
+            </a>
+          </div>
+    
+          <!-- Centered Logo -->
+          <div class="logo">
+            <a href="index.html"><img src="assets/terraleaf.png" alt="The Terra Leaf Logo" /></a>
+          </div>
+    
+          <!-- Nav Menu -->
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" class="active">About</a>
+            <a href="products.html">Products</a>
+            <a href="#contact">Contact</a>
+          </div>          
+        </nav>
+      </header>
+    
+      <!-- SIDE DRAWER FOR SMALL SCREEN -->
+      <div class="side-drawer" id="sideDrawer">
+        <a href="index.html" style="text-decoration: none;">Home</a>
+        <a href="about.html" style="text-decoration: none;">About</a>
+        <a href="products.html" style="text-decoration: none;">Products</a>
+        <a href="#contact" style="text-decoration: none;">Contact</a>
+      </div>
+
+  <div class="container">
+
+    <div class="intro">
+      <h2 class="section-title">About The Terra Leaf</h2>
+      <p>We are on a mission to bring sustainable change through eco-friendly, biodegradable alternatives for daily use.</p>
+    </div>
+
+    <div class="story-section">
+      <div class="story-text">
+        <h3>Our Story</h3>
+        <p>The Terra Leaf was founded with a passion for protecting nature and promoting eco-conscious living. Recognizing the potential of areca palm leaves, we began crafting sustainable tableware that helps reduce plastic pollution.</p>
+        <p>From humble beginnings, our journey has grown into a global effort to make mealtime greener, safer, and more elegant — one leaf at a time.</p>
+      </div>
+      <div class="story-img">
+        <img src="assets/scrolling images/scroll image 6.jpeg" alt="Eco Products by The Terra Leaf" />
+      </div>
+    </div>
+
+    <div class="features-section">
+      <h2 class="section-title">Why Choose The Terra Leaf</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <h4>🌿 100% Natural</h4>
+          <p>Made from fallen areca palm leaves — no trees are cut down in the process.</p>
+        </div>
+        <div class="feature">
+          <h4>♻️ Biodegradable</h4>
+          <p>Compostable and chemical-free, perfect for conscious living.</p>
+        </div>
+        <div class="feature">
+          <h4>🔥 Durable & Safe</h4>
+          <p>Microwave & freezer friendly, yet tough enough for everyday use.</p>
+        </div>
+        <div class="feature">
+          <h4>🍽️ Versatile Design</h4>
+          <p>Available in various shapes & sizes — perfect for homes, restaurants, and events.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h3>Ready to Make a Greener Choice?</h3>
+      <p>Join us in building a sustainable future — explore our natural, elegant tableware now.</p>
+      <a href="products.html">Explore Our Products</a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="footer-content">
+      <!-- Column 1: Know More -->
+      <div class="footer-column">
+        <h3>Know More</h3>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="policy page/terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 2: Policies -->
+      <div class="footer-column">
+        <h3>Policies</h3>
+        <ul>
+          <li><a href="policy page/shipping policy.html">Shipping Policy</a></li>
+          <li><a href="policy page/refund policy.html">Refund Policy</a></li>
+          <li><a href="policy page/privacy policy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Info -->
+      <div class="footer-column contact-info">
+        <h3>Contact Us</h3>
+        <p>📞 +91 9345326030</p>
+        <p>📞 +91 9514171946</p>
+        <p>📧 <a href="mailto:info@theterraleafs.com">info@theterraleafs.com</a></p>
+        <p>🏠 No.12, Velusamypuram, 2nd Street,<br> Karur - 639002, TamilNadu, India</p>
+      </div>
+    </div>
+
+    <div class="map-container-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.0433283451574!2d78.05125359999999!3d10.966964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baa2f1cc7e28c9f%3A0x6b40776ae9761ca1!2sVeluswamypuram%2C%20Karur%2C%20Tamil%20Nadu%20639002!5e0!3m2!1sen!2sin!4v1714227300768!5m2!1sen!2sin"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 The Terra Leaf. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
